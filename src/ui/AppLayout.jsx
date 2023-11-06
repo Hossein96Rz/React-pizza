@@ -16,7 +16,7 @@ function AppLayout() {
           <Outlet />
         </main>
       </div>
-      <CartOverview />
+      <CartOverview /> 
     </div>
   );
 }
