@@ -25,7 +25,7 @@ function MenuItem({ pizza }) {
           )}
           <Button type="small">Add to cart</Button>
         </div>
-      </div>
+      </div>0
     </li>
   );
 }
