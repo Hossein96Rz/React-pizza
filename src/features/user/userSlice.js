@@ -8,7 +8,7 @@ function getPosition() {
 }
 
 export const fetchAddress = createAsyncThunk(
-  "user/fetchAdress",
+  "user/fetchAddress",
   async function () {
     // 1) We get the user's geolocation position
     const positionObj = await getPosition();
@@ -53,7 +53,8 @@ const userSlice = createSlice({
       })
       .addCase(fetchAddress.rejected, (state, action) => {
         state.status = "error";
-        state.error = action.error.message;
+        state.error =
+          "There was a problem getting your address. Make sure you fill this field!";
       }),
 });
 
