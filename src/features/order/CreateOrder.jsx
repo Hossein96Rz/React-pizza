@@ -112,6 +112,16 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <input
+            type="hidden"
+            name="position"
+            value={
+              position.longitude && position.latitude
+                ? `${position.latitude},${position.longitude}`
+                : ""
+            }
+          />
+
           <Button type="primary" disabled={isSubmitting || isLoadinAddress}>
             {!isSubmitting
               ? `Order now from ${formatCurrency(totalPrice)}`
@@ -139,9 +149,12 @@ export async function action({ request }) {
   if (Object.keys(errors).length > 0) return errors;
 
   //if everything is OK create order and redirect
+  console.log(order);
+
   const newOrder = await createOrder(order);
   store.dispatch(clearCart());
   return redirect(`/order/${newOrder.id}`);
+  // return null;
 }
 
 export default CreateOrder;
